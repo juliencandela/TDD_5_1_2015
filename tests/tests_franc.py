@@ -1,12 +1,12 @@
+from money import Money
+
 __author__ = 'marie-helene'
 
 import unittest
 
-from franc import Franc
-
 
 class TestFranc(unittest.TestCase):
     def test_multiplication(self):
-        five = Franc(5)
-        self.assertEqual(Franc(10), five * 2)
-        self.assertEqual(Franc(15), five * 3)
+        five = Money.franc(5)
+        self.assertEqual(Money.franc(10), five * 2)
+        self.assertEqual(Money.franc(15), five * 3)
