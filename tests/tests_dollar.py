@@ -8,10 +8,8 @@ from dollar import Dollar
 class TestDollar(unittest.TestCase):
     def test_multiplication(self):
         five = Dollar(5)
-        product = five * 2
-        self.assertEqual(10, product.amount)
-        product = five * 3
-        self.assertEqual(15, product.amount)
+        self.assertEqual(Dollar(10), five * 2)
+        self.assertEqual(Dollar(15), five * 3)
 
     def test_equality(self):
         self.assertEqual(Dollar(5), Dollar(5))
