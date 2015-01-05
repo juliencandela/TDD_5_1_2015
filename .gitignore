@@ -1,3 +1,4 @@
 .idea/
 TDD_5_1_2015.iml
-
+app/__pycache__/
+tests/__pycache__/
