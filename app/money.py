@@ -2,21 +2,34 @@ __author__ = 'marie-helene'
 
 
 class Money:
-    def __init__(self, amount):
+    def __init__(self, amount, currency):
         self.amount = amount
+        self._currency = currency
 
     def __eq__(self, other):
-        return self.amount == other.amount and self.__class__ == other.__class__
+        return self.amount == other.amount and self.currency == other.currency
 
     def __ne__(self, other):
         return not self == other
 
+    def __mul__(self, multiplier):
+        return Money(self.amount * multiplier, self.currency)
+
+    def __repr__(self):
+        return str(self.amount)+self.currency
+
+    def __str__(self):
+        return repr(self)
+
     @classmethod
     def dollar(cls, amount):
-        from dollar import Dollar
-        return Dollar(amount)
+        return Money(amount, "USD")
 
     @classmethod
     def franc(cls, amount):
-        from franc import Franc
-        return Franc(amount)
+        return Money(amount, "CHF")
+
+    @property
+    def currency(self):
+        return self._currency
+
