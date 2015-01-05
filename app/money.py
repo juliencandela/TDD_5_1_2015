@@ -1,4 +1,5 @@
 __author__ = 'marie-helene'
+from expression import Expression
 
 
 class Money:
@@ -21,6 +22,9 @@ class Money:
     def __str__(self):
         return repr(self)
 
+    def __add__(self, other):
+        return Expression(self, other)
+
     @classmethod
     def dollar(cls, amount):
         return Money(amount, "USD")
@@ -32,4 +36,8 @@ class Money:
     @property
     def currency(self):
         return self._currency
+
+    def reduce(self, bank, currency_to):
+        rate = bank.rate(self.currency, currency_to)
+        return Money(self.amount / rate, currency_to)
 
